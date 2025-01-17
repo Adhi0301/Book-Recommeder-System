@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-OERcA2zjE6lpbMQKRl6hS4Rbuj/1vRRaOMsXm7rZx0R7H7BpKfU8IWwWzRjvoI4+" crossorigin="anonymous">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #28a745;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .card {
+            background-color: #2c2c2c;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            border-radius: 10px 10px 0 0;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title, .card-text {
+            margin: 0;
+            color: #f8f9fa;
+        }
+
+        footer {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">My Book Recommender</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/recommend">Recommend</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <h1>Top 50 Books</h1>
+        <div class="row">
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ image[i] }}" class="card-img-top" alt="Book Cover">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book_name[i] }}</h5>
+                            <p class="card-text"><strong>Author:</strong> {{ author[i] }}</p>
+                            <p class="card-text"><strong>Votes:</strong> {{ votes[i] }}</p>
+                            <p class="card-text"><strong>Rating:</strong> {{ rating[i] }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My Book Recommender. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qj8lf+SAZZzO+hG73kdd2wfZAS3Bbo5MQJf1hXm8FGz8OcJwNMR8b7XtZ35f5N2Z" crossorigin="anonymous"></script>
+</body>
+</html>
